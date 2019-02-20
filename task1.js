@@ -1,17 +1,20 @@
-var min = 10;
-var max = 100;
-var step = 10;
+let min = 10;
+let max = 100;
+let step = 10;
+let i = min;
 
-for(i = min; i<=max; i+=step) {
+for(let i = min; i<=max; i+=step) {
     console.log(i);
 }
 
-var j = min - step;
-while(j<max) {
-    console.log(j+=step);
+i = min - step;
+while(i<max) {
+    console.log(i+=step);
 }
 
-var k = min - step;
+i = min - step;
 do {
-    console.log(k+=step);
-}while(k<max)
+    console.log(i+=step);
+}while(i<max)
+
+
