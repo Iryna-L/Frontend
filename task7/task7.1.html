@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Полиморфная функция formatDate
+        // важность: 5
+        // Напишите функцию formatDate(date), которая возвращает дату в формате dd.mm.yy.
+
+        // Ее первый аргумент должен содержать дату в одном из видов:
+
+        // Как объект Date.
+        // Как строку, например yyyy-mm-dd или другую в стандартном формате даты.
+        // Как число секунд с 01.01.1970.
+        // Как массив [гггг, мм, дд], месяц начинается с нуля
+        // Для этого вам понадобится определить тип данных аргумента и, при необходимости, преобразовать входные данные в нужный формат.
+
+        function formatDate(date) { 
+            if(date instanceof Date){
+                console.log("date is Date");
+                return date;
+            }
+            if (date.substr) {
+                console.log("date is String");
+                date.substr(2);
+                var arr = date.split("-");
+                return new Date(arr[0],arr[1],arr[2]);
+
+            }
+            if (typeof date == "number"){
+                console.log("date is Milliseconds");
+                return new Date(date);
+            }
+            if(date instanceof Array){
+                console.log("date is array");
+                return new Date(date[0],date[1],date[2]);
+            }
+         }
+
+        alert( formatDate('2011-10-02') ); // 02.10.11
+        alert( formatDate(1234567890) ); // 14.02.09
+        alert( formatDate([2014, 0, 1]) ); // 01.01.14
+        alert( formatDate(new Date(2014, 0, 1)) ); // 01.01.14
+    </script>
+</body>
+</html>
