@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//         Eval-калькулятор с ошибками
+// важность: 5
+// Напишите интерфейс, который принимает математическое выражение (в prompt) и выводит результат его вычисления через eval.
+
+// При ошибке нужно выводить сообщение и просить переввести выражение.
+
+// Ошибкой считается не только некорректное выражение, такое как 2+, но и выражение, возвращающее NaN, например 0/0.
+
+        try {
+            
+            var func = function(){
+                var a = prompt();
+                var arr = a.split(" ");
+                var result;
+                switch(arr[1]){
+                    case "+": result = +arr[0] + +arr[2]; break;
+                    case "-": result = +arr[0] - +arr[2];break;
+                    case "/": result = +arr[0] / +arr[2];break;
+                    case "*": result = +arr[0] * +arr[2];break;
+
+                }
+                if(typeof result == "number"||result != undefined){
+                    return result;
+                }
+                else {
+                    throw new Error("INCORRECT VALUE");
+                }
+
+            }
+            
+            var func1 = eval("alert(func())");
+        } catch(e){
+            alert(e.message + " try again");
+            alert(func());
+        }
+        finally {
+            alert("the end, because it is block 'finally '");
+        }
+    </script>
+</body>
+</html>
