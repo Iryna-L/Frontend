@@ -17,16 +17,23 @@
 // printNumbersInterval()
 
 // P.S. Функция должна использовать setInterval.
-        
-        var print = setTimeout(function printNumbersInterval(i) {
-            i = 1;
-            console.log(i);
+        var i = 1;
+        var printNumbersInterval = function(J){
+            if(J<=20){
+                console.log(J);
+            }
+           
             i++;
-            print = setTimeout(printNumbersInterval, 100);
+        }
 
-        }, 100)
+        var time = setInterval(function() {
+            
+            printNumbersInterval(i);
+            
+            
+        }, 100);
 
-        
+      
     </script>
 </body>
 </html>
