@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//Промисифицировать setTimeout
+// Напишите функцию delay(ms), которая возвращает промис, переходящий в состояние "resolved" через ms миллисекунд.
+
+// Пример использования:
+
+// delay(1000)
+//   .then(() => alert("Hello!"))
+// Такая функция полезна для использования в других промис-цепочках.
+
+// Вот такой вызов:
+
+// return new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     doSomeThing();
+//     resolve();
+//   }, ms)
+// });
+// Станет возможным переписать так:
+
+// return delay(ms).then(doSomething); 
+        function delay(ms){
+            var pr = new Promise((resolve, reject) => {
+                setTimeout((resolve("ok")) , ms);
+            });
+            return pr;
+        };
+
+        function a(){
+            return delay(1000).then(alert("function does something")); 
+        }
+        a();
+    </script>
+</body>
+</html>

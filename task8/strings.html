@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        alert(`це просто
+        приклад використання 
+        'шаблонизации функции'`);
+        let a = 1;
+        let b = 5;
+        
+        function func(arrStr,...values){
+            console.log(arrStr);
+            console.log(values);
+        }
+        let str = func`myFunc ${a} + ${b}`;
+        
+        //-----
+        var stri = "harry potter and the philosopher's stone";
+        var str2 = "harry";
+        var str3 = "malfoy";
+        alert("harry is present " + stri.includes(str2));
+        alert("malfoy " + stri.includes(str3));
+        
+        console.log(stri.endsWith("stone"));
+        console.log(stri.startsWith("stone"));
+        console.log(stri.repeat(20));
+
+    </script>
+</body>
+</html>
