@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="load()" id="b" style="border-radius: 50%; background: black; width: 50px; height: 50px;color : white">
+        click
+    </button>
+    <ul id ="app"></ul>
+    <script>
+        var div = document.body.children[0];
+        function load(){
+            var xhr = new XMLHttpRequest(); 
+            console.log(xhr.readyState);
+            xhr.open('GET', 'p.json', true);
+            console.log(xhr.readyState);
+
+            xhr.onreadystatechange = function(){
+                if(this.readyState != 4) return;
+                div.style.cssText="color: red;\
+                    background-color: yellow; \
+                    ";
+                    var arr = JSON.parse(xhr.responseText);
+                    var ul = document.getElementById("app");
+                    var html = `<li>${arr.map(item => item.name).join('</li><li>')}</li>`;
+                    ul.innerHTML = html;
+                }
+            console.log(xhr.readyState);
+            xhr.send();
+            console.log(xhr.readyState);
+            }
+            
+    </script>
+</body>
+</html>
