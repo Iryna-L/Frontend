@@ -15,12 +15,14 @@
         var div = document.body.children[0];
         function load(){
             var xhr = new XMLHttpRequest(); 
-            console.log(xhr.readyState);
+            console.log(xhr.readyState + " 1");
             xhr.open('GET', 'p.json', true);
-            console.log(xhr.readyState);
+            console.log(xhr.readyState + " @");
 
             xhr.onreadystatechange = function(){
+                console.log(xhr.readyState + " =");
                 if(this.readyState != 4) return;
+                console.log(xhr.readyState + " 2");
                 div.style.cssText="color: red;\
                     background-color: yellow; \
                     ";
@@ -28,12 +30,12 @@
                     var ul = document.getElementById("app");
                     var html = `<li>${arr.map(item => item.name).join('</li><li>')}</li>`;
                     ul.innerHTML = html;
+                    console.log(xhr.readyState + " *");
                 }
-            console.log(xhr.readyState);
+            console.log(xhr.readyState + " 4");
             xhr.send();
-            console.log(xhr.readyState);
-            }
-            
+            console.log(xhr.readyState + " 5");
+        } 
     </script>
 </body>
 </html>

@@ -20,7 +20,7 @@
             age: 2
         }
 
-        let { name, type , ...rest} = animal;
+        let { name: n = "po", type , ...rest} = animal;
         console.log(name + " " + type + " " + rest);
         //вложенная деструктуризация
         var animal1 = {
