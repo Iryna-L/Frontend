@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>1:1</td>
+            <td>2:1</td>
+            <td>3:1</td>
+            <td>4:1</td>
+            <td>5:1</td>
+        </tr>
+        <tr>
+            <td>1:2</td>
+            <td>2:2</td>
+            <td>3:2</td>
+            <td>4:2</td>
+            <td>5:2</td>
+        </tr>
+        <tr>
+            <td>1:3</td>
+            <td>2:3</td>
+            <td>3:3</td>
+            <td>4:3</td>
+            <td>5:3</td>
+        </tr>
+        <tr>
+            <td>1:4</td>
+            <td>2:4</td>
+            <td>3:4</td>
+            <td>4:4</td>
+            <td>5:4</td>
+        </tr>
+        <tr>
+            <td>1:5</td>
+            <td>2:5</td>
+            <td>3:5</td>
+            <td>4:5</td>
+            <td>5:5</td>
+        </tr>
+    </table>
+    <script>
+//         Выделите ячейки по диагонали
+// важность: 5
+// Напишите код, который выделит все ячейки в таблице по диагонали.
+
+// Вам нужно будет получить из таблицы table все диагональные td и выделить их, используя код:
+
+// // в переменной td DOM-элемент для тега <td>
+// td.style.backgroundColor = 'red';
+
+    var table = document.body.children[0];
+    console.log(table);
+    var counter = 0;
+    var counter2 = 0;
+    while(table){
+        if(counter == counter2){
+            var td = table.rows[counter].cells[counter2];
+        }
+        td.style.backgroundColor = 'red';
+        counter++;
+        counter2++;
+
+    }
+
+
+    </script>
+</body>
+</html>
