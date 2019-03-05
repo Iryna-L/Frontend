@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="widget" data-widget-name="menu">Выберите жанр</div>
+        <!-- Получите пользовательский атрибут
+        важность: 5
+        1. Получите div в переменную.
+        2. Получите значение атрибута "data-widget-name" в переменную.
+        3. Выведите его. -->
+    <script>
+        var div = document.getElementById("widget");
+        //var atr = div.getAttribute("data-widget-name");
+        var atr = div.dataset.widgetName;
+        alert(atr + div);
+    </script>
+</body>
+</html>

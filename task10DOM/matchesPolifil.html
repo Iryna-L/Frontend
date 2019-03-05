@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <!-- Полифилл для matches
+        важность: 5
+        Метод elem.matches(css) в некоторых старых браузерах поддерживается под старым именем matchesSelector или с префиксами, то есть: webkitMatchesSelector (старый Chrome, Safari), mozMatchesSelector (старый Firefox) или Element.prototype.msMatchesSelector (старый IE).
+        
+        Создайте полифилл, который гарантирует стандартный синтаксис elem.matches(css) для всех браузеров. -->
+    <script>
+        function polifil(){
+            if(!Element.prototype.matches){
+                Element.prototype.matches = Element.prototype.webkitMatchesSelector;//старий хром
+                Element.prototype.matches = Element.prototype.msMatchesSelector;//старий IE
+                Element.prototype.matches = Element.prototype.matchesSelector;                
+                Element.prototype.matches = Element.prototype.mozMatchesSelector;//старий Firefox
+            }
+        }
+    </script>
+</body>
+</html>
