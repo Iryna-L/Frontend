@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <!-- Полифилл для closest
+        важность: 5
+        Метод elem.closest(css) для поиска ближайшего родителя, удовлетворяющего селектору css, не поддерживается некоторыми браузерами, например IE11-.
+        
+        Создайте для него полифилл. -->
+    <script>
+        function polifil(){
+            if(!Element.prototype.closest){
+                Object.defineProperty(Element.prototype, 'closest', {
+                    get: function(css){
+                        return this.matches(css);
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>

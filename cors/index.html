@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="resp">
+    
+    </div>
+    
+    <div id="data"></div>
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", 'http://httpbin.org/post', true);
+        var jsonData = {
+            "param1": true,
+            "param2": 2,
+            "param3": "string"
+        };
+       
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.onreadystatechange = function() { 
+            if (this.readyState == 4 && this.status === 200) {
+                console.log(this.responseText);
+                var respJson = JSON.parse(this.responseText)
+                document.getElementById('resp').innerHTML = JSON.stringify(respJson);
+                document.getElementById('data').innerHTML = JSON.stringify(respJson.data);
+                console.log(respJson.data);
+            }
+        }
+        xhr.send(jsonData);
+    </script>
+</body>
+</html>

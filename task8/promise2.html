@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//         Загрузить массив последовательно
+// Есть массив URL:
+
+//  'use strict';
+
+// let urls = [
+//   'user.json',
+//   'guest.json'
+// ];
+// Напишите код, который все URL из этого массива загружает один за другим (последовательно) и сохраняет результаты в массиве results, а потом выводит.
+
+// Вариант с параллельной загрузкой выглядел бы так:
+
+// Promise.all( urls.map(httpGet) )
+//   .then(alert);
+// В этой задаче загрузку нужно реализовать последовательно.
+
+       
+        let urls = ['user.json','guest.json']; 
+        var results = [];
+        var chain = Promise.resolve();
+
+        function httpGet(url){
+            return "guest";//просто для прикладу, я знаю, що це не правильний метод
+        }
+        urls.forEach(function(url) {
+            chain = chain
+                .then(() => httpGet(url))
+                .then((res) => {
+                    results.push(res);
+                });
+            });
+        
+        
+        console.log(results);
+    </script>
+</body>
+</html>

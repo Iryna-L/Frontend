@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //array
+        let arr = ["g","a","r"];
+        let [first, second] = arr;
+        console.log(first + " " + second);
+        //object
+        var animal = {
+            name: "bars",
+            type: "cat",
+            gender: "male",
+            age: 2
+        }
+
+        let { name: n = "po", type , ...rest} = animal;
+        console.log(name + " " + type + " " + rest);
+        //вложенная деструктуризация
+        var animal1 = {
+            name1: ["bars", "cat"],
+            gender1: "male",
+            age1: 2
+        }
+
+        let { name1: [item1, item2]} = animal1;
+        console.log(item1 + " " + item2);
+        //деструктуризація в параметрах функції
+
+        var obj = {
+            a : 12,
+            b: 10
+        }
+        function myFunc({a,b}){
+            return a+b;
+        }
+        console.log(myFunc(obj));
+    </script>
+</body>
+</html>

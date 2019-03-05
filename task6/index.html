@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var user = {
+            name: "ira"
+        }
+        Object.defineProperty(user, "age", {writable: true});
+        // alert(user.age);
+        user.age = 21;
+        // alert(user.age);
+
+        Object.defineProperties(user, 
+        {
+            newProp:{
+                set: function(prop){
+                this.prop = prop;
+            },
+            get: function(){
+                return this.age;
+            }
+            }
+            
+        });
+    alert(user.newProp);
+
+    </script>
+</body>
+</html>

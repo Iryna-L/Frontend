@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <!-- Поставьте класс ссылкам
+        важность: 3
+        Сделайте желтыми внешние ссылки, добавив им класс external.
+        
+        Все ссылки без href, без протокола и начинающиеся с http://internal.com считаются внутренними. -->
+
+    <style>
+        .external {
+            background-color: yellow
+        }
+    </style>
+    
+    <a name="list">список</a>
+    <ul>
+        <li><a href="http://google.com">http://google.com</a></li>
+        <li><a href="/tutorial">/tutorial.html</a></li>
+        <li><a href="local/path">local/path</a></li>
+        <li><a href="ftp://ftp.com/my.zip">ftp://ftp.com/my.zip</a></li>
+        <li><a href="http://nodejs.org">http://nodejs.org</a></li>
+        <li><a href="http://internal.com/test">http://internal.com/test</a></li>
+    </ul>
+    <script>
+        var links = document.querySelectorAll('a');
+        console.log(links);
+        for(var i = 0; i<links.length;i++){
+            console.log(links[i]);
+            if(links[i].hasAttribute('href')){
+                var atr = links[i].getAttribute('href');
+                console.log(atr);
+                if(!atr.startsWith("http://internal.com")&&atr.startsWith("http")||atr.startsWith("ftp://")){
+                    links[i].classList.add('external');
+                }
+            }
+            
+        }
+    </script>
+</body>
+</html>
