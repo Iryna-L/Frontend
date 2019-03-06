@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- Удаление элементов
+        важность: 5
+        Напишите полифилл для метода remove для старых браузеров.
+        
+        Вызов elem.remove():
+        
+        Если у elem нет родителя – ничего не делает.
+        Если есть – удаляет элемент из родителя -->
+</head>
+<body>
+    <div>Это</div>
+    <div>Все</div>
+    <div>Элементы DOM</div>
+    
+    <script>
+        /* ваш код полифилла */
+        function remove(o) {
+            o.parentNode.removeChild(o);
+        }
+        if(!Element.prototype.remove){
+            remove(this);
+        }
+        var elem = document.body.children[0];
+    
+        elem.remove(); // <-- вызов должен удалить элемент
+    </script>
+</body>
+</html>
