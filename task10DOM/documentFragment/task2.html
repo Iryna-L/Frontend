@@ -36,31 +36,31 @@ P.P.S. Если предположить, что у нас заранее ест
             <td>Вася</td>
             <td>Петров</td>
             <td>Александрович</td>
-            <td class = "age1">10</td>
+            <td >10</td>
         </tr>
         <tr class="row">
             <td>Петя</td>
             <td>Иванов</td>
             <td>Петрович</td>
-            <td class = "age2">9</td>
+            <td >9</td>
         </tr>
         <tr class="row">
             <td>Владимир</td>
             <td>Ленин</td>
             <td>Ильич</td>
-            <td class = "age3">15</td>
+            <td>15</td>
         </tr>
     </table>
     <script>
         var table = document.getElementById("table");
+        var arrObjects = table.querySelectorAll('tr');
         var arrAges = [];
-        //var tdEl = document.getElementById("age");
-        console.log(tdEl);
-        for(var i = 1;i<table.childNodes.length;i++){
-            var tdEl = table.querySelectorAll("age" + i);
-            arrAges.push(tdEl);
+        console.log(arrObjects);
+        for(var i = 1; i< arrObjects.length;i++){
+            var age = arrObjects[i].querySelector('td:last-child');
+            console.log(age);
+            arrAges.push(age);
         }
-       console.log(arrAges);
     </script>
 </body>
 </html>
