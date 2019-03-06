@@ -1,0 +1,66 @@
+<!-- Отсортировать таблицу
+важность: 5
+Есть таблица:
+
+Имя	Фамилия	Отчество	Возраст
+Вася	Петров	Александрович	10
+Петя	Иванов	Петрович	15
+Владимир	Ленин	Ильич	9
+...	...	...	...
+Строк в таблице много: может быть 20, 50, 100… Есть и другие элементы в документе.
+
+Как бы вы предложили отсортировать содержимое таблицы по полю Возраст? Обдумайте алгоритм, реализуйте его.
+
+Как сделать, чтобы сортировка работала как можно быстрее? А если в таблице 10000 строк (бывает и такое)?
+
+P.S. Может ли здесь помочь DocumentFragment?
+
+P.P.S. Если предположить, что у нас заранее есть массив данных для таблицы в JavaScript – что быстрее: отсортировать эту таблицу или сгенерировать новую? -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <table id = "table">
+        <tr class="row">
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Отчество</th>
+            <th>Возраст</th>
+        </tr>
+        <tr class="row">
+            <td>Вася</td>
+            <td>Петров</td>
+            <td>Александрович</td>
+            <td class = "age1">10</td>
+        </tr>
+        <tr class="row">
+            <td>Петя</td>
+            <td>Иванов</td>
+            <td>Петрович</td>
+            <td class = "age2">9</td>
+        </tr>
+        <tr class="row">
+            <td>Владимир</td>
+            <td>Ленин</td>
+            <td>Ильич</td>
+            <td class = "age3">15</td>
+        </tr>
+    </table>
+    <script>
+        var table = document.getElementById("table");
+        var arrAges = [];
+        //var tdEl = document.getElementById("age");
+        console.log(tdEl);
+        for(var i = 1;i<table.childNodes.length;i++){
+            var tdEl = table.querySelectorAll("age" + i);
+            arrAges.push(tdEl);
+        }
+       console.log(arrAges);
+    </script>
+</body>
+</html>

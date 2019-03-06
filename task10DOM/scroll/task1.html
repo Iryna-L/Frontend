@@ -1,0 +1,53 @@
+<!-- Подменить div на другой с таким же размером
+важность: 3
+Посмотрим следующий случай из жизни. Был текст, который, в частности, содержал div с зелеными границами:
+Программист Валера из вашей команды написал код, который позиционирует его абсолютно и смещает в правый верхний угол. Вот этот код:
+Допишите код Валеры, сделав так, чтобы текст оставался на своем месте после того, как DIV будет смещен.
+
+Сделайте это путем создания вспомогательного DIV с теми же width, height, border, margin, padding, что и у желтого DIV.
+
+Используйте только JavaScript, без CSS.
+
+Должно быть так (новому блоку задан фоновый цвет для демонстрации): -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        #moving-div {
+            border: 5px groove green;
+            padding: 5px;
+            margin: 10px;
+            background-color: yellow;
+        }
+    </style>
+    Before Before Before
+    
+    <div id="moving-div">
+        Text Text Text
+        <br> Text Text Text
+        <br>
+    </div>
+    
+    After After After
+    
+    <script>          
+        var div = document.getElementById('moving-div')
+        div.style.position = 'absolute'
+        div.style.right = div.style.top = 0;
+        var a = document.createElement("div");
+        a.style.height = div.offsetHeight + "px";
+        a.style.background = "grey";
+        var compSt = getComputedStyle(div, "");
+        a.style.marginTop = compSt.marginTop;
+        a.style.marginBottom = compSt.marginBottom;
+        div.insertAdjacentElement("beforebegin", a);
+    </script>
+    
+</body>
+</html>
