@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--Раскрывающееся меню
+важность: 5
+Создайте меню, которое раскрывается/сворачивается при клике:
+
+
+P.S. HTML/CSS исходного документа понадобится изменить.-->
+    <button type = "button" id ="b">▶ ▼ Сладости (нажми меня)!</button>
+
+    <ul id="list" style="display:none">
+        <li>Торт</li>
+        <li>Пончик</li>
+        <li>Пирожное</li>
+    </ul>
+
+    <script>
+        var button = document.querySelector('button');
+        button.addEventListener("click", function(){var ul = document.getElementById("list"); ul.style.display = "block"})
+    </script>
+</body>
+</html>

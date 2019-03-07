@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--Спрятать при клике
+важность: 5
+Используя JavaScript, сделайте так, чтобы при клике на кнопку исчезал элемент с id="text".-->
+
+    <input type="button" id="hider" value="Нажмите, чтобы спрятать текст" />
+
+    <div id="text">Текст</div>
+
+    <script>
+        function hide(){
+            var t = document.getElementById("text");
+            t.innerHTML = "";
+        }
+        var button = document.getElementById("hider");
+        button.onclick = hide;
+    </script>
+</body>
+</html>

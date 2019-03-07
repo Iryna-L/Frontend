@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--Карусель
+важность: 4
+Напишите «Карусель» – ленту изображений, которую можно листать влево-вправо нажатием на стрелочки.
+
+
+В дальнейшем к ней можно легко добавить анимацию, динамическую подгрузку и другие возможности.
+
+P.S. В этой задаче разработка HTML/CSS-структуры составляет 90% решения.-->
+
+        <!-- ваша верстка виджета, ваши стили -->
+
+  <button class="arrow">⇦</button>
+  <button class="arrow">⇨</button>
+
+
+  <ul>
+    <li><img src="https://js.cx/carousel/1.png"></li>
+    <li><img src="https://js.cx/carousel/2.png"></li>
+    <li><img src="https://js.cx/carousel/3.png"></li>
+    <li><img src="https://js.cx/carousel/4.png"></li>
+    <li><img src="https://js.cx/carousel/5.png"></li>
+    <li><img src="https://js.cx/carousel/6.png"></li>
+    <li><img src="https://js.cx/carousel/7.png"></li>
+    <li><img src="https://js.cx/carousel/8.png"></li>
+    <li><img src="https://js.cx/carousel/9.png"></li>
+    <li><img src="https://js.cx/carousel/10.png"></li>
+  </ul>
+
+
+  
+
+  <script>
+      var container = document.createElement("div");
+      container.style.cssText = "background: grey; width: 400px; height: 130px; overflow: hidden";
+      var ul = document.querySelector("ul");
+      container.appendChild(ul);
+      document.body.appendChild(container);
+      var position = 0;
+      function move1() {
+          ul.style.marginLeft = position -400 + "px";
+          position = position - 400;
+      }
+      function move2() {
+          ul.style.marginLeft = position + 400 + "px";
+          position = position + 400;
+      }
+      var prev = document.getElementsByClassName("arrow")[0];
+      var next = document.getElementsByClassName("arrow")[1];
+      prev.addEventListener("click", move1);
+      next.addEventListener("click", move2);
+  </script>
+</body>
+</html>
