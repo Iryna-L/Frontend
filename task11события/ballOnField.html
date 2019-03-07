@@ -19,8 +19,7 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      margin-left: -20px;
-      margin-top: -20px;
+    
     }
   </style>
 </head>
@@ -33,7 +32,7 @@
 
   <div id="field">
     <img src="https://js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..................................................................................
   </div>
   <script>
         var field = document.getElementById("field");
@@ -54,9 +53,9 @@
                 top: y - innerCoords.top - b.clientHeight/2,//координати кліка - розміри поля - розміри зображення поділено на 2
                 left: x - innerCoords.left - b.clientWidth/2
             }
-            if (ballCoords.top < 0) ballCoords.top = field.clientTop;
+            if (ballCoords.top < 0) ballCoords.top = 0;
 
-            if (ballCoords.left < 0) ballCoords.left = field.clientLeft;
+            if (ballCoords.left < 0) ballCoords.left = 0;
 
             if (ballCoords.left + b.clientWidth > field.clientWidth) {
                 ballCoords.left = field.clientWidth - b.clientWidth;
