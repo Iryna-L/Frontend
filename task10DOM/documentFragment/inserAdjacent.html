@@ -1,0 +1,31 @@
+<!-- Вставьте элементы в конец списка
+важность: 5
+Напишите код для вставки текста html в конец списка ul с использованием метода insertAdjacentHTML. Такая вставка, в отличие от присвоения innerHTML+=, не будет перезаписывать текущее содержимое.
+
+Добавьте к списку ниже элементы <li>3</li><li>4</li><li>5</li>: -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+    </ul>
+    <script>
+        var ul = document.body.children[0];
+        var fragment = document.createDocumentFragment();
+        for(var i = 2; i<5;i++){
+            var li = document.createElement("li");
+            li.innerHTML = i;
+            fragment.appendChild(li);
+        }
+        ul.appendChild(fragment);
+        console.log(ul);
+    </script>
+</body>
+</html>

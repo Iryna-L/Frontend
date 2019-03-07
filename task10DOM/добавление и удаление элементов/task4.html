@@ -1,0 +1,37 @@
+<!-- Создать список
+важность: 4
+Напишите интерфейс для создания списка.
+
+Для каждого пункта:
+
+Запрашивайте содержимое пункта у пользователя с помощью prompt.
+Создавайте пункт и добавляйте его к UL.
+Процесс прерывается, когда пользователь нажимает ESC или вводит пустую строку.
+Все элементы должны создаваться динамически.
+
+Если посетитель вводит теги – пусть в списке они показываются как обычный текст. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var ul = document.createElement("UL");
+        var answer = prompt("tell me something");
+        while(answer){
+            var li = document.createElement('li');
+            let n = document.createTextNode(answer);
+            li.appendChild(n);
+            ul.appendChild(li);
+            console.log(ul);
+            document.body.appendChild(ul);
+            answer = prompt("tell me something");
+        }
+        
+    </script>
+</body>
+</html>
