@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+        <!-- Раскрывающееся дерево
+        важность: 5
+        Создайте дерево, которое по клику на заголовок скрывает-показывает детей: 
+    Требования:
+
+Использовать делегирование.
+Клик вне текста заголовка (на пустом месте) ничего делать не должен.
+При наведении на заголовок – он становится жирным, реализовать через CSS.
+P.S. При необходимости HTML/CSS дерева можно изменить.-->
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <ul class="tree">
+    <li><span class = "tree_title">Животные</span>
+      <ul>
+        <li><span class = "tree_title">Млекопитающие</span>
+          <ul>
+            <li>Коровы</li>
+            <li>Ослы</li>
+            <li>Собаки</li>
+            <li>Тигры</li>
+          </ul>
+        </li>
+        <li><span class = "tree_title">Другие</span>
+          <ul>
+            <li>Змеи</li>
+            <li>Птицы</li>
+            <li>Ящерицы</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><span class = "tree_title">Рыбы</span>
+      <ul>
+        <li><span class = "tree_title">Аквариумные</span>
+          <ul>
+            <li>Гуппи</li>
+            <li>Скалярии</li>
+          </ul>
+
+        </li>
+        <li><span class = "tree_title">Морские</span>
+          <ul>
+            <li>Морская форель</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+    <style>
+        .tree_title_clicked, .tree_title:hover {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+    </style>
+
+  <script>
+        var ul = document.querySelector(".tree");
+        ul.addEventListener("click", TitleClick);
+        //ul.removeEventListener("click", TitleClick);
+        //ul.addEventListener("click", TitleClick2);
+        function TitleClick(event){
+            if (event.target.tagName != 'SPAN') {
+                return;
+            } 
+            event.target.classList.add("tree_title_clicked");
+            for(var i = 1; i< event.target.parentNode.children.length;i++){
+                event.target.parentNode.children[i].hidden = !event.target.parentNode.children[i].hidden;
+            }
+            
+        }
+        
+  </script>
+</body>
+
+</html>

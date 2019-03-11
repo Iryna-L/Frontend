@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      height: 2000px;
+      /* подсказка должна работать независимо от прокрутки */
+    }
+    /* ваши стили */
+  </style>
+</head>
+
+<body>
+
+  <p>ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя</p>
+  <p>ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя ЛяЛяЛя</p>
+
+  <button data-tooltip="подсказка длиннее, чем элемент">Короткая кнопка</button>
+  <button data-tooltip="HTML<br>подсказка">Ещё кнопка</button>
+
+  <p>Прокрутите страницу, чтобы ссылки были вверху и проверьте, правильно ли показываются подсказки.</p>
+
+<style>
+    button {
+        position: relative;
+    }
+</style>
+  <script>
+      var b = document.getElementsByTagName("button");
+      console.log(b);
+      var div = document.createElement("span");
+      var bool = 0;
+        
+        document.onmouseover = function(event){
+            var at = event.target.getAttribute('data-tooltip');
+           
+            if(!at)return;
+            console.log(at);
+            
+            div.innerHTML = at;
+            
+            event.target.prepend(div);
+            bool = 1;
+       
+        }
+        document.onmouseout = function(event) {
+            if(bool == 1){
+                event.target.removeChild(div);
+                console.log("a");
+            }
+        }
+  </script>
+
+</body>
+
+</html>

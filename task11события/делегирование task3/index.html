@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+        <!-- Сделать сортировку таблицы при клике на заголовок.
+        Требования:
+
+Использовать делегирование.
+Код не должен меняться при увеличении количества столбцов или строк.
+P.S. Обратите внимание, тип столбца задан атрибутом у заголовка. Это необходимо, ведь числа сортируются иначе чем строки. Соответственно, код это может использовать. -->
+<head>
+  <meta charset="utf-8">
+  <style>
+    th {
+      cursor: pointer;
+    }
+
+    th:hover {
+      background: yellow;
+    }
+  </style>
+</head>
+
+<body>
+
+  <table id="grid">
+    <thead>
+      <tr>
+        <th data-type="number">Возраст</th>
+        <th data-type="string">Имя</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>5</td>
+        <td>Вася</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Петя</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Женя</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Маша</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Илья</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    var table= document.querySelector("#grid");
+    table.addEventListener("click", Sort);
+
+    function Sort(){
+        var tbody = document.querySelector("tbody");
+        var rows = tbody.querySelectorAll("tr");
+        console.log(rows);
+        var td = [];
+        for (var k = 0;k<rows.length;k++){
+            td[k] = +rows[k].querySelector("td").innerHTML;
+        }
+        
+        for (var i = 0; i< td.length; i++){
+            var min = +td[i].innerHTML;
+            for (var j = i + 1; j < td.length; j++) {
+
+                if (+td[j].innerHTML < min) {
+                    var mm = +td[i].innerHTML;
+                    min = +td[j].innerHTML;
+                    td[i].innerHTML = min;
+                    td[j].innerHTML = mm;
+                }
+
+            }
+            alert(td[0].innerHTML);
+        }        
+    }
+
+    
+  </script>
+
+</body>
+
+</html>
