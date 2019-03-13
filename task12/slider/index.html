@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+        <!-- Слайдер
+        важность: 5
+        Создайте слайдер:
+        
+        
+        Захватите мышкой синий бегунок и двигайте его, чтобы увидеть в работе.
+        
+        Важно:
+        
+        Слайдер должен нормально работать при резком движении мыши влево или вправо, за пределы полосы. При этом бегунок должен останавливаться четко в нужном конце полосы.
+        При нажатом бегунке мышь может выходить за пределы полосы слайдера, но слайдер пусть все равно работает (это удобно для пользователя). -->
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div id="slider" class="slider">
+    <div class="thumb"></div>
+  </div>
+
+  <script>
+    var thumb = document.getElementsByClassName("thumb")[0];
+    var slid = document.getElementById("slider");
+
+    console.log(thumb);
+    thumb.onmousedown = function(e){
+        console.log(e);
+        thumb.style.position = "absolute";
+        moveAt(e);
+        
+        thumb.style.zIndex = 1000;
+        function moveAt(e) {
+            thumb.style.left = e.clientX - thumb.offsetWidth / 2 + 'px';
+            thumb.style.top = "3px";//thumb.style.marginTop;
+        }
+
+        slid.onmousemove = function(e) {
+            moveAt(e);
+        }
+        
+        thumb.onmouseup = function() {
+            slid.onmousemove = null;
+            thumb.onmouseup = null;
+        }
+        thumb.ondragstart = function() {
+            return false;
+        };
+    }
+
+    
+
+  </script>
+
+</body>
+
+</html>
