@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <!-- Масштабирование колёсиком мыши
+        важность: 5
+        Сделайте так, чтобы при прокрутке колёсиком мыши над элементом, он масштабировался.
+        
+        Масштабирование обеспечивайте при помощи свойства CSS transform: -->
+
+    <div id = "div" style = "border: 1px solid red; width:150px;height: 150px; margin: 300px auto">
+        При прокрутке колёсика мыши над этим элементом, он будет масштабироваться.
+    </div>
+    <script>
+        var scale = 1;
+        var elem = document.getElementById("div");
+        elem.addEventListener("wheel", func);
+        function func(e){
+            e = e || window.event;
+            var delta = e.deltaY || e.detail || e.wheelDelta;
+            if(delta > 0){
+                elem.style.transform = elem.style.WebkitTransform = elem.style.MsTransform = `scale(${scale+=0.5})`; 
+            }
+             else {
+                elem.style.transform = elem.style.WebkitTransform = elem.style.MsTransform = `scale(${scale-=0.5})`; 
+             }
+        }
+          
+    </script>
+</body>
+</html>
