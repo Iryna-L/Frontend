@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+    <!-- Поведение "вложенная подсказка"
+    важность: 5
+    Напишите JS-код, который будет показывать всплывающую подсказку над элементом, если у него есть атрибут data-tooltip.
+    
+    Условие аналогично задаче Поведение "подсказка", но здесь необходима поддержка вложенных элементов. При наведении показывается самая вложенная подсказка. -->
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      height: 2000px;
+      /* подсказка должна работать при прокрутке */
+    }
+    .message {
+      position: fixed;
+      z-index: 100;
+      padding: 10px 20px;
+      border: 1px solid #b3c9ce;
+      border-radius: 4px;
+      text-align: center;
+      font: italic 14px/1.3 sans-serif;
+      color: #333;
+      background: #fff;
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+    }
+    #house {
+      margin-top: 50px;
+      width: 400px;
+      border: 1px solid brown;
+    }
+
+    #roof {
+      width: 0;
+      height: 0;
+      border-left: 200px solid transparent;
+      border-right: 200px solid transparent;
+      border-bottom: 20px solid brown;
+      margin-top: -20px;
+    }
+
+    p {
+      text-align: justify;
+      margin: 10px 3px;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div data-tooltip="Это – внутренность дома" id="house">
+    <div data-tooltip="Это – крыша" id="roof"></div>
+
+    <p>Жили-были на свете три поросёнка. Три брата.</p>
+
+    <p>Все одинакового роста, кругленькие, розовые, с одинаковыми весёлыми хвостиками.</p>
+
+    <p>Даже имена у них были похожи. Звали поросят Ниф-Ниф, Нуф-Нуф и Наф-Наф. Всё лето они кувыркались в зелёной траве, грелись на солнышке, нежились в лужах.</p>
+
+    <p>Но вот наступила осень. <a href="http://ru.wikipedia.org/wiki/Три_поросёнка" data-tooltip="Читать дальше&hellip;">Наведи на меня</a></p>
+
+  </div>
+  <script>
+      var house = document.getElementById("house");
+        house.addEventListener("mouseover", Displaying);
+        house.addEventListener("mouseout", Removing);
+
+      function Displaying(event){
+          if(event.target.hasAttribute("data-tooltip")){
+            let tip = event.target.getAttribute("data-tooltip");
+            let block = document.createElement("span");
+            block.innerHTML = tip;
+            block.classList.add("message");
+            event.target.appendChild(block);
+          }   
+          else  {
+            let a = hasA(event.target);
+            let tip = a.getAttribute("data-tooltip");
+            let block = document.createElement("span");
+            block.innerHTML = tip;
+            console.log(block);
+            block.classList.add("message");
+            a.appendChild(block);
+          }
+                 
+      }
+
+      function hasA(t){
+          var par = t.parentNode;
+          if(par.hasAttribute("data-tooltip")){
+              return par;
+          }
+          else {
+              hasA(par);
+          }
+      }
+      function Removing(event){
+          //var b = document.getElementsByClassName("message");
+          var b = document.querySelector(".message");
+          if(b&&event.target.hasAttribute("data-tooltip")){
+            event.target.removeChild(b);
+          }
+          else {
+            let a = hasA(event.target);
+            if(b){
+              a.removeChild(b);
+            }
+          }
+          
+         
+      }
+    
+  </script>
+</body>
+
+</html>
