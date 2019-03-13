@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+        <!-- Поле только для цифр
+        важность: 5
+        При помощи событий клавиатуры сделайте так, чтобы в поле можно было вводить только цифры. Пример ниже.
+        В поле должны нормально работать специальные клавиши Delete/Backspace и сочетания с Ctrl/Alt/Cmd.
+
+P.S. Конечно, при помощи альтернативных способов ввода (например, вставки мышью), посетитель всё же может ввести что угодн -->
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  Введите ваш возраст:
+  <input type="text">
+
+
+  <script>
+   var inp = document.querySelector("input");
+   inp.onkeypress = function(e){
+       var symbol = getChar(e);
+       console.log(symbol);
+
+       var arr = ["1","2","3","4","5","6","7","8","9","0"];
+        for(var i =0; i<arr.length;i++){
+            if(symbol==arr[i]){
+                console.log("ok");
+                inp.value += symbol;
+            }
+            else{
+                e.preventDefault();
+            }
+            
+        }
+       
+   }
+
+
+    // вспомогательная функция, если понадобится
+
+    function getChar(event) {
+      if (event.which == null) {
+        if (event.keyCode < 32) return null;
+        return String.fromCharCode(event.keyCode) // IE
+      }
+
+      if (event.which != 0 && event.charCode != 0) {
+        if (event.which < 32) return null;
+        return String.fromCharCode(event.which) // остальные
+      }
+
+      return null; // специальная клавиша
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+        <!-- Прокрутка без влияния на страницу
+        важность: 4
+        В большинстве браузеров если в процессе прокрутки textarea колёсиком мышки (или жестами) мы достигаем границы элемента, то прокрутка продолжается уже на уровне страницы (в Firefox при этом будет небольшая задержка перед продолжением прокрутки).
+        
+        Иными словами, если в примере ниже вы попробуете прокрутить textarea вниз, то когда прокрутка дойдёт до конца – начнёт прокручиваться документ:
+        Задача:
+
+        Создать скрипт, который при подключении к документу исправлял бы поведение всех textarea, чтобы при прокрутке они не трогали документ.
+        Направление прокрутки – только вверх или вниз.
+        Редактор прокручивает только мышкой или жестами (на мобильных устройствах), прокрутку клавиатурой здесь рассматривать не нужно (хотя это и возможно). -->
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body style="height: 1000px; position: relative">
+
+  <header>
+    <h2>Начало документа</h2>
+  </header>
+
+  <textarea cols="80" rows="10">
+    прокрути меня
+    прокрути меня
+    прокрути меня
+    прокрути меня
+    прокрути меня
+    прокрути меня
+    прокрути меня
+    прокрути меня
+    прокрути меня
+    прокрути меня
+    прокрути меня
+    прокрути меня
+    прокрути меня
+    прокрути меня
+    прокрути меня
+    прокрути меня
+    прокрути меня
+  </textarea>
+
+
+  <footer style="position: absolute; bottom: 0">
+    Конец документа.
+  </footer>
+  <script>
+     document.onwheel = function(e) {
+         if(!e.target.matches("textarea"))return;
+
+         var delta = e.deltaY;
+         if(delta < 0 && e.target.scrollTop == 0){
+            e.preventDefault();
+         } 
+         if(delta >0 && e.target.scrollHeight - e.target.clientHeight - e.target.scrollTop <= 1){
+             console.log(e.target.scrollHeight );
+             console.log(e.target.clientHeight);
+             console.log(e.target.scrollTop);
+             console.log( e.target.scrollHeight - e.target.clientHeight - e.target.scrollTop );
+            e.preventDefault();
+         }
+     }
+        
+    
+      
+      
+        
+
+  </script>
+</body>
+
+</html>

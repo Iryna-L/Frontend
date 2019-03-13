@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    .img-replace {
+      float: left;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Google -->
+
+  <div style="width:114px;height:40px;font-size:32px;letter-spacing:3px" class="img-replace">
+    <span style="color:#1A53F7">G</span><span style="color:#E42131">o</span><span style="color:#FEB819">o</span><span style="color:#164AF2">g</span><span style="color:#00a315">l</span><span style="color:#E42131">e</span>
+  </div>
+
+  <!-- Яндекс -->
+  <div style="width:101px;height:40px;font-size:32px" class="img-replace">
+    <span style="color:#F00">Я</span>ндекс
+  </div>
+
+  <!-- Bing -->
+  <div style="width:100px;display:inline-block; height:40px;font-size:32px;color:#006dd4;font-weight:bold;letter-spacing: 3px; font-family:sans-serif">bing</div>
+
+  <hr>
+  <!-- картинки (для bing картинки специально нет, чтобы протестировать случай "загрузка не удалась") -->
+  <!-- <img src="https://js.cx/search/google.png" width="101" height="40" alt="Google">
+  <img src="https://js.cx/search/yandex.png" width="114" height="40" alt="Яндекс">
+  
+  <img src="https://js.cx/search/bing.png" width="101" height="40" alt="Файла нет (bing)"> -->
+
+  <script>
+      var divs = document.getElementsByClassName("img-replace");
+
+      var img = document.createElement('img');
+      
+      img.src = "https://js.cx/search/google.png";
+     
+      img.onload = function(){
+        divs[0].innerHTML = '';
+        divs[0].prepend(img);
+      }
+
+      var img2 = document.createElement('img');
+     
+      img2.src = "https://js.cx/search/yandex.png";
+      img2.onload = function(){
+        divs[1].innerHTML = '';
+        divs[1].prepend(img2);
+      }
+
+      var img3 = document.createElement('img');
+  
+      img3.src = "https://js.cx/search/bing.png";
+      img3.onload = function(){
+        divs[2].innerHTML = '';
+        divs[2].prepend(img3);
+      }
+  </script>
+
+</body>
+
+</html>
