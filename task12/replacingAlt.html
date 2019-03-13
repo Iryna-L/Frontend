@@ -61,6 +61,9 @@
         divs[2].innerHTML = '';
         divs[2].prepend(img3);
       }
+      img3.onerror = function(){
+        console.log("error");
+      }
   </script>
 
 </body>
