@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+        <!-- Дерево: проверка клика на заголовке
+        Есть кликабельное JavaScript-дерево UL/LI (см. задачу Раскрывающееся дерево).
+
+<ul>
+  <li>Млекопитающие
+    <ul>
+      <li>Коровы</li>
+      <li>Ослы</li>
+      <li>Собаки</li>
+      <li>Тигры</li>
+    </ul>
+  </li>
+</ul>
+При клике на заголовке его список его детей скрывается-раскрывается. Выглядит это так: (кликайте на заголовки)
+        Однако, проблема в том, что скрытие-раскрытие происходит даже при клике вне заголовка, на пустом пространстве справа от него.
+
+Как скрывать/раскрывать детей только при клике на заголовок?
+
+В задаче Раскрывающееся дерево это решено так: заголовки завёрнуты в элементы SPAN и проверяются клики только на них. Представим на минуту, что мы не хотим оборачивать текст в SPAN, а хотим оставить как есть. Например, по соображениям производительности, если дерево и так очень большое, ведь оборачивание всех заголовков в SPAN увеличит количество DOM-узлов в 2 раза.
+
+Решите задачу без обёртывания заголовков в SPAN, используя работу с координатами.
+
+Исходный документ содержит кликабельное дерево.
+
+P.S. Задача – скорее на сообразительность, однако подход может быть полезен в реальной жизни. -->
+<head>
+  <meta charset="utf-8">
+  <style>
+    .tree li {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <ul class="tree" id="tree">
+    <li>Животные
+      <ul>
+        <li>Млекопитающие
+          <ul>
+            <li>Коровы</li>
+            <li>Ослы</li>
+            <li>Собаки</li>
+            <li>Тигры</li>
+          </ul>
+        </li>
+        <li>Другие
+          <ul>
+            <li>Змеи</li>
+            <li>Птицы</li>
+            <li>Ящерицы</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Рыбы
+      <ul>
+        <li>Аквариумные
+          <ul>
+            <li>Гуппи</li>
+            <li>Скалярии</li>
+          </ul>
+
+        </li>
+        <li>Морские
+          <ul>
+            <li>Морская форель</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <script>
+    var tree = document.getElementById('tree');
+
+
+    tree.onclick = function(evt) {
+      var evt = evt || event;
+      var target = evt.target || evt.srcElement;
+      // var reserve = target.innerHTML;
+      target.innerHTML = `<span>${target.innerHTML}</span>`;
+      console.log(target);
+
+      //target.parentNode.replaceChild(s,target);
+      var elem = document.elementFromPoint(evt.clientX, evt.clientY);      
+      if(elem.matches("span")){
+        console.log(elem);
+        /* раскрыть-закрыть детей */
+        var node = target.getElementsByTagName('ul')[0];
+              if (!node) return; // нет детей
+
+        node.style.display = node.style.display ? '' : 'none';
+        
+      }
+      
+          target.innerHTML.replace("<span>", "");
+          target.innerHTML.replace("</span>", "");
+          console.log(target);
+    }
+    
+  </script>
+
+</body>
+
+</html>
