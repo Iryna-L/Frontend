@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+        <!--Мышонок на "клавиатурном" приводе
+        важность: 4
+        Кликните по мышонку. Затем нажимайте клавиши со стрелками, и он будет двигаться.
+        
+        Демо в новом окне
+        В этой задаче запрещается ставить обработчики куда-либо, кроме элемента #mouse.
+        
+        Можно изменять атрибуты и классы в HTML.-->
+<head>
+  <meta charset="utf-8">
+  <style>
+    #mouse {
+        display: inline-block;
+        cursor: pointer;
+        margin: 0;
+        width: 94px;
+        height: 135px;
+    }
+
+    #mouse:focus {
+        outline: 1px dashed black;
+    }
+</style>
+</head>
+
+<body>
+
+  <p>Кликните на мышонка и передвигайте его, нажимая клавиши со стрелками.</p>
+
+  <pre id="mouse">
+ _   _
+(q\_/p)
+ /. .\
+=\_t_/=   __
+ /   \   (
+((   ))   )
+/\) (/\  /
+\  Y  /-'
+ nn^nn
+</pre>
+
+
+  <script>
+    var mouse = document.getElementById("mouse");
+    mouse.tabIndex = 1;
+    mouse.onclick = function(){
+       // mouse.onfocus = function(){
+            window.onkeydown = function(e) {
+             
+                console.log(e.keyCode);
+                if(e.keyCode == 37){
+                    console.log("working");
+                    mouse.style.marginRight += mouse.clientWidth + "px";
+                }
+                if(e.keyCode == 38){
+                    mouse.style.marginBottom += mouse.clientHeight + "px";
+                }
+               if(e.keyCode == 39){
+                    mouse.style.marginLeft += mouse.clientWidth + "px";
+                    console.log("working");
+                }
+                if(e.keyCode == 40){
+                    mouse.style.marginTop += mouse.clientHeight + "px";
+                }
+            }
+        //};
+        console.log("ok");
+    }
+  </script>
+
+</body>
+
+</html>
