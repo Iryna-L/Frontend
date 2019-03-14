@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <style>
+            td select,
+            td input {
+            width: 150px;
+            }
+
+            label {
+            display: block;
+            }
+            /* ваши стили */
+            .error {
+                color: red;
+                border: 2px solid red;
+            }
+        </style>
+    </head>
+
+    <body>
+    <form>
+        <table>
+        <tr>
+            <td>От кого</td>
+            <td>
+                <input name="from" type="text">
+            </td>
+        </tr>
+        <tr>
+            <td>Ваш пароль</td>
+            <td>
+                <input name="password" type="password">
+            </td>
+        </tr>
+        <tr>
+            <td>Повторите пароль</td>
+            <td>
+                <input name="password2" type="password">
+            </td>
+        </tr>
+        <tr>
+            <td>Куда</td>
+            <td>
+                <select name="to">
+                    <option></option>
+                    <option value="1">Отдел снабжения</option>
+                    <option value="2">Отдел разработки</option>
+                    <option value="3">Директору</option>
+                </select>
+            </td>
+        </tr>
+        </table>
+
+        Сообщение:
+        <label>
+            <textarea name="message" style="display:block;width:400px;height:100px"></textarea>
+        </label>
+
+        <input type="button" onclick="validate(this.form)" value="Проверить">
+    </form>
+
+    <script>
+        function validate(form) {
+            var els = form.elements;
+            console.log(els.from);
+            if(!els.from.value) {
+                showError("fill in your name", els.from);
+            }
+            else {
+                reset(els.from);
+            }
+
+            if(!els.password.value) {
+                showError("fill in the password", els.password);
+            }
+            else {
+                reset(els.password);
+            }
+
+            if(els.password.value!=els.password2.value) {
+                showError("not correct password, try again", els.password2);
+            }
+            else {
+                reset(els.password2);
+            }
+
+            if(!els.to.value) {
+                showError("choose something", els.to);
+            }
+            else {
+                reset(els.to);
+            }
+
+            if(!els.message.value) {
+                showError("fill in the message", els.message);
+            }
+            else {
+                reset(els.message);
+            }
+        }
+        
+        function showError(message, input){
+            var td = document.createElement("td");
+            td.innerHTML = message;
+            td.classList.add("error");
+            input.parentNode.appendChild(td);
+            console.log("show error");
+        }
+       
+       function reset(input){
+           var parent = input.parentNode;
+           parent.removeChild(parent.lastChild);
+           console.log("fixed");
+       }
+    </script>
+
+
+    </body>
+
+</html>
